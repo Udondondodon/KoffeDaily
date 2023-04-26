@@ -88,14 +88,14 @@
               <i class="bi bi-person-circle" style="font-size: 3rem;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <form action="logout" method="post">
+              <form action="/logout" method="post">
                 @csrf
                 <button type='submit' class="dropdown-item bi bi-box-arrow-right">Log out</button>
               </form>
             </ul>
           </li>
           @else
-          <a class="nav-link text-dark font" href="login">Login</a>
+          <a class="nav-link text-dark font" href="/login">Login</a>
           @endauth
         </div>
       </div>
