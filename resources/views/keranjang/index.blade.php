@@ -3,10 +3,11 @@
 @section("container")
 
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <a href="{{ url('shop') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
+        <div class="col mt-3 mb-3 hidden">
+            <a href="{{ url('shop') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> You see nothing</a>
         </div>
+        <div class="col mt-4 mb-3">
+            <a href="{{ url('shop') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
         <div class="col-md-12">
             <div class="card">
