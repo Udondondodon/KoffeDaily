@@ -19,6 +19,6 @@ class IsLogin
         if(Auth::check()){
             return $next($request);
         }
-        return redirect('/login')->with('loginError');
+        return redirect('/login')->with('loginError', 'Silahkan login terlebih dahulu sebelum melanjutkan');
     }
 }

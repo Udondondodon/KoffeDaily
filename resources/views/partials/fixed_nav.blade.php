@@ -24,12 +24,11 @@
 
 
       .logo {
-      position: absolute;
-      left: 50%;
+      position: relative;
       transform: translateX(-50%);
-      width: 150px;
+      width: 50px;
       height: auto;
-      margin-top: 24px;
+      margin-top: 2px;
       }
 
       .cup {
@@ -75,7 +74,7 @@
           </li>
         </ul>
         <a class="navbar-brand logo" href="/home">
-          <img src="/logo.png" alt="Logo">
+          <img src="/logo1.png" alt="Logo">
         </a>
         <ul class="navbar-nav ms-auto me-auto">
           <li class="nav-item">

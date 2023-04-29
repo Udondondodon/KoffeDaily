@@ -46,7 +46,7 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/login')->with('success', 'Registration successfull! Please Login');
+        return redirect('/login')->with('success', 'Registrasi Berhasil! Silahkan Login');
     }
 
     public function storemi(Request $request) 
@@ -75,7 +75,7 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/login')->with('success', 'Registration successfull! Please Login');
+        return redirect('/login')->with('success', 'Registrasi Berhasil! Silahkan Login');
     }
 
     public function storeadmin(Request $request) 
@@ -93,6 +93,6 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/login')->with('success', 'Registration successfull! Please Login');
+        return redirect('/login')->with('success', 'Registrasi Berhasil! Silahkan Login');
     }
 }

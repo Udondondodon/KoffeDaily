@@ -2,15 +2,95 @@
 
 @section("container")
 
-{{-- @include('partials.fixed_nav') --}}
+@include('partials.fixed_nav')
+
+<style>
+
+.background {
+  background-color: #c0c0c0;
+  height: 1080px;
+  width: 1920px;
+  position: absolute;
+}
+  body {
+    background-image: url('coffee-background.jpg');
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+  }
+  
+  form {
+    max-width: 450px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    animation: slide-up 0.9s ease;
+    margin-top: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"], 
+  input[type="password"] {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus 
+  input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  button[type="submit"] {
+    font-size: 18px;
+    color: #fff;
+    background-color: #8d6e63;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #795548;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    form {
+      padding: 20px;
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+</style>
 
 <div class ='row justify-content-center'>
   <div class= " col-lg-4 mt-3">
   <main class="form-registration">
+    <form action="/admin/register" method="post">
       <h1 class="h3 mb-3 mt-3 fw-normal text-center">Register Now</h1>
-      <form action="/admin/register" method="post">
-          @csrf
-        <div class="form-floating">
+      @csrf
+      <div class="form-floating">
           <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
           <label for="name">Nama Lengkap</label>
           @error('name')
