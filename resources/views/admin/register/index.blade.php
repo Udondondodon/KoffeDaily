@@ -137,8 +137,8 @@
         </div>
         <input type="hidden" name="role" value="1">
         <button class="w-100 btn btn-lg btn-primary mt-3"type="submit">Register</button>
+        <small class='d-block text-center mt-3'>Already have account? <a href="/login">Login Now</a></small>
       </form>
-      <small class='d-block text-center mt-3'>Already have account? <a href="/login">Login Now</a></small>
     </main>
   </div>
 </div>

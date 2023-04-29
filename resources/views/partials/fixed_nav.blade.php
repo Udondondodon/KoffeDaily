@@ -25,7 +25,6 @@
 
       .logo {
       position: relative;
-      transform: translateX(-50%);
       width: 50px;
       height: auto;
       margin-top: 2px;
@@ -36,7 +35,6 @@
       height: auto;
       margin-top: -2px;
       }
-
 
     .navbar-brand img {
       width: 100%;

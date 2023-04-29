@@ -103,7 +103,7 @@
           <label for="password">Password</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <small class='d-block text-center mt-3'>Not registered? <a href="/register">Register Now</a></small>
       </form>
-      <small class='d-block text-center mt-3'>Not registered? <a href="/register">Register Now</a></small>
     </main>
 </div>
