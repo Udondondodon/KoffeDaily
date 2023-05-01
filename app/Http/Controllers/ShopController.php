@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use Carbon\Carbon;
 
 class ShopController extends Controller
 {
@@ -23,8 +24,29 @@ class ShopController extends Controller
         ]);
     }
 
+
+    public function data($name) {
+        $barangs = Barang::where('name', $name)->first();
+
+        return view('shop.data', 
+            compact('barangs'), [
+            'title' => 'Data'
+        ]);
+    }
+
     public function cart($name) {
         $barangs = Barang::where('name', $name)->first();
+
+        return view('keranjang.index', 
+            compact('barangs'), [
+            'title' => 'keranjang'
+        ]);
+    }
+    
+
+    public function pesan(Request $request, $name)
+    {	
+    	$barangs = Barang::where('name', $name)->first();
 
         return view('keranjang.index', 
             compact('barangs'), [
