@@ -57,14 +57,11 @@
                                         <td>Jumlah Pesan</td>
                                         <td>:</td>
                                         <td>
-                                             {{-- <form method="post" action="{{ url('cart') }}/{{ $barangs->name }}" >
+                                             <form method="post" action="{{ url('cart') }}/{{ $barangs->id }}" >
                                             @csrf
                                                 <input type="text" name="jumlah_pesan" class="form-control" required="">
                                                 <button type="submit" class="btn btn-primary mt-2"><i class="fa fa-shopping-cart"></i> Pesan</button>
-                                            </form> --}}
-                                            <a href="/pesan">
-                                                <button type="button" class="btn btn-primary mt-2"></button>
-                                              </a>
+                                            </form>
                                         </td>
                                     </tr>
                                 </tbody>

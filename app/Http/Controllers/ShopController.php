@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use App\Models\Barang;
+use App\Models\Pesanan;
 use Carbon\Carbon;
+// use Auth;
 
 class ShopController extends Controller
 {
@@ -25,12 +29,12 @@ class ShopController extends Controller
     }
 
 
-    public function data($name) {
-        $barangs = Barang::where('name', $name)->first();
+    public function shop($id) {
+        $barangs = Barang::where('id', $id)->first();
 
         return view('shop.data', 
             compact('barangs'), [
-            'title' => 'Data'
+            'title' => 'Shop'
         ]);
     }
 
@@ -44,14 +48,28 @@ class ShopController extends Controller
     }
     
 
-    public function pesan(Request $request, $name)
+    public function pesan(Request $request, $id)
     {	
-    	$barangs = Barang::where('name', $name)->first();
+    	$barang = Barang::where('id', $id)->first();
 
-        return view('keranjang.index', 
-            compact('barangs'), [
-            'title' => 'keranjang'
-        ]);
+        if($request->input('jumlah_pesan') > $barang->stok)
+    	{
+    		return redirect('shop/'.$id);
+    	}
+
+        $pesanan = new Pesanan;
+        $pesanan->user_id = Auth::user()->id;
+        $pesanan->tanggal_pemesanan = Date::now()->format('Y-m-d');
+        $pesanan->waktu_pemesanan = Date::now()->format('Y-m-d H:i:s');
+        $pesanan->nama_produk = $barang->name;
+        $pesanan->quantity = $request->input('jumlah_pesan');
+        $pesanan->nama_pemesan = Auth::user()->name;
+        $pesanan->total_harga = $barang->harga* $request->input('jumlah_pesan');
+
+        $pesanan->save();
+
+        dd($pesanan);
+
     }
 
     

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->integer('pesanan_id');
             $table->integer('jumlah');
             $table->integer('jumlah_harga');
-            $table->timestamps();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

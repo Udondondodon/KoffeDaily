@@ -34,8 +34,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('IsL
 // Shop
 
 Route::get('/shop', [ShopController::class, 'index'])->middleware('IsLogin');
-Route::get('/data/{name}', [ShopController::class, 'data'])->middleware('IsLogin');
-Route::post('/cart/{name}', [ShopController::class, 'pesan'])->middleware('IsLogin');
+Route::get('/shop/{id}', [ShopController::class, 'shop'])->middleware('IsLogin');
+Route::post('/cart/{id}', [ShopController::class, 'pesan'])->middleware('IsLogin');
 Route::get('/sell', [ShopController::class, 'jual'])->middleware('IsLogin');
 Route::post('/sell', [ShopController::class, 'form'])->middleware('IsLogin');
 

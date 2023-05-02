@@ -85,6 +85,8 @@
               <i class="bi bi-person-circle" style="font-size: 3rem;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
+              <button type='submit' class="dropdown-item ">Lihat Akun</button>
+              <li><hr class="dropdown-divider"></li>
               <form action="/logout" method="post">
                 @csrf
                 <button type='submit' class="dropdown-item bi bi-box-arrow-right">Log out</button>

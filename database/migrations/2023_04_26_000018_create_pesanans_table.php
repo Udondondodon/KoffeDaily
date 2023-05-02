@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->date('tanggal');
-            $table->integer('jumlah_harga');
-            $table->timestamps();
+            $table->date('tanggal_pemesanan');
+            $table->dateTime('waktu_pemesanan');
+            $table->string('nama_produk');
+            $table->integer('quantity');
+            $table->string('nama_pemesan');
+            $table->integer('total_harga');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

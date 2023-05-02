@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         @foreach($barangs as $barang)
         <div class="col-md-2 mb-3">
-          <a href="{{ url('data') }}/{{ $barang->name }}">
+          <a href="{{ url('shop') }}/{{ $barang->id }}">
             <div class="card">
                 @if ($barang->image)
                 <img src="{{ asset('storage/' . $barang->image) }}" alt="..." class="card-img-top">
