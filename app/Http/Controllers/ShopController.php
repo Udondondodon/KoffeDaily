@@ -68,7 +68,10 @@ class ShopController extends Controller
 
         $pesanan->save();
 
-        dd($pesanan);
+        return view('keranjang.detail', 
+            compact('pesanan'), [
+            'title' => 'Detail'
+        ]);
 
     }
 
