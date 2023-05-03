@@ -90,7 +90,7 @@ table td:first-child {
             <a href="">
             <button class="btn-buat-pesanan">Buat Pesanan</button>
             </a>
-            <a href="">
+            <a href="/shop">
             <button class="btn-batal">Batal</button>
             </a>
         </div>

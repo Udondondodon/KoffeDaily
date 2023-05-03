@@ -10,12 +10,12 @@
 </style>
 <div style="display: flex; align-items: center;">
     <h1>SHOP</h1>
-    <a href="sell">Jual</a>
+    <a href="/sell">Jual</a>
   </div>
 <div class="container">
     <div class="row justify-content-center">
         @foreach($barangs as $barang)
-        <div class="col-md-2 mb-3">
+        <div class="col-md-4 mb-3">
           <a href="{{ url('shop') }}/{{ $barang->id }}">
             <div class="card">
                 @if ($barang->image)

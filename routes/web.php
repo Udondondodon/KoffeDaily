@@ -41,3 +41,5 @@ Route::post('/sell', [ShopController::class, 'form'])->middleware('IsLogin');
 
 
 Route::get('/learn', [LearnController::class, 'index'])->middleware('IsLogin');
+
+

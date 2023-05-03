@@ -5,7 +5,7 @@
 <div class ='row justify-content-center'>
     <div class= " col-lg-4 mt-3">
     <main class="form-registration">
-        <h1 class="h3 mb-3 mt-3 fw-normal text-center">Register Now</h1>
+        <h1 class="h3 mb-3 mt-3 fw-normal text-center">Daftarkan Produk</h1>
         <form action="/sell" method="post" enctype="multipart/form-data">
             @csrf
           <div class="form-floating">
