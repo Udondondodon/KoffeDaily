@@ -2,17 +2,27 @@
 @include('partials.fixed_nav')
 @section("container")
 
-@endsection
 
 <style>
   body {
     background-image: url('coffee-background.jpg');
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
+    max-height: 100px;
   }
   
-  form {
-    max-width: 450px;
+
+  .background {
+    position: absolute;
+    z-index: -1;
+  background-color: #387FC7 ;
+  height: 1300px;
+  width: 1920px;
+  top: -100px;
+  right: -15px;
+}
+form {
+  max-width: 450px;
     margin: 0 auto;
     background-color: #fff;
     padding: 25px;
@@ -69,20 +79,23 @@
       transform: translateY(50%);
       opacity: 0;
     }
-  
+    
     to {
       transform: translateY(0%);
       opacity: 1;
     }
   }
-</style>
+  </style>
 
   <div class ='row justify-content-center'>
     <div class= " col-lg-4 mt-3">
-    <main class="form-registration">
+      <div class="background">
+        <div class="image"></div>
+      </div>
+      <main class="form-registration">
       <form action="/mitra/register" method="post" enctype="multipart/form-data">
         <h1 class="h3 mb-3 mt-3 fw-normal text-center">Register Now</h1>
-            @csrf
+        @csrf
           <div class="form-floating">
             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
             <label for="name">Nama Lengkap</label>
@@ -189,3 +202,4 @@
       </main>
     </div>
   </div>
+  @endsection

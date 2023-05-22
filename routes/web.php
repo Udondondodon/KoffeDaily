@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 
 
 
+Route::get('/', [DashboardController::class, 'a'])->middleware('guest');
 Route::get('/home', [DashboardController::class, 'home'])->middleware('guest');
 
 // Login
@@ -36,8 +37,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('IsL
 Route::get('/shop', [ShopController::class, 'index'])->middleware('IsLogin');
 Route::get('/shop/{id}', [ShopController::class, 'shop'])->middleware('IsLogin');
 Route::post('/detail/{id}', [ShopController::class, 'pesan'])->middleware('IsLogin');
-Route::get('/sell', [ShopController::class, 'jual'])->middleware('IsLogin');
-Route::post('/sell', [ShopController::class, 'form'])->middleware('IsLogin');
+Route::get('/sell', [ShopController::class, 'jual'])->middleware('IsMitra');
+Route::post('/sell', [ShopController::class, 'form']);
 
 
 Route::get('/learn', [LearnController::class, 'index'])->middleware('IsLogin');

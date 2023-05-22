@@ -9,9 +9,6 @@
 </style>
 
 <div class="container">
-        {{-- <div class="col mt-4 mb-3">
-            <a href="{{ url('shop') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
-        </div> --}}
         <div class="col-md-10 me-auto ms-auto">
             <div class="card">
                 <div class="card-body">

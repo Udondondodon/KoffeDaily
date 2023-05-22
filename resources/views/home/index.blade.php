@@ -1,22 +1,18 @@
 @extends('layouts.main')
+@include('partials.fixed_nav')
 
 @section("container")
  
-@endsection
-@include('partials.fixed_nav')
+
+{{-- @include('partials.nav') --}}
 
 
 <style>
 
 body {
   overflow: hidden;
-}
-
- .background {
-  background-color: #c0c0c0;
-  height: 1080px;
-  width: 1920px;
-  position: absolute;
+  /* background: #c0c0c0; */
+  background-color: #387FC7 ;
 }
 
 .image {
@@ -91,9 +87,6 @@ body {
 <main>
   <div class="container mb-5">
     <div class="row justify-content-center">
-      <div class="background">
-        <div class="image"></div>
-      </div>
       <div class="col-md-4 order-2">
         <div class="card">
           <div class="card-body">
@@ -139,7 +132,7 @@ body {
       document.getElementById('Register2').style.display = 'block';
     });
   </script>
-  </body>
 </main>
 </html>
 
+@endsection

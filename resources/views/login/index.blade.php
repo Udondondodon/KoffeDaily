@@ -2,14 +2,25 @@
 @include('partials.fixed_nav')
 @section("container")
 
-@endsection
+
 
 <style>
   body {
+    overflow: hidden;
     background-image: url('coffee-background.jpg');
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
+    background-color: #387FC7 ;
+    
   }
+
+  .background {
+  position: absolute;
+  z-index: -1;
+  height: 1080px;
+  width: 1920px;
+  top: -100px;
+}
   
   form {
     max-width: 400px;
@@ -74,9 +85,13 @@
   }
 </style>
 
-<div class ='row justify-content-center'>
+  <div class ='row justify-content-center'>
+    <div class="background">
+    <div class="image"></div>
+  </div>
   <main class="col-lg-4 mt-3">
-
+    
+    
     @if(session()->has('success'))
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ session('success') }}
@@ -85,11 +100,11 @@
     @endif
 
     @if(session()->has('loginError'))
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('loginError') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session('loginError') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-    @endif
+      @endif
 
       <form action='/login' method ='post'>
         @csrf
@@ -106,4 +121,6 @@
         <small class='d-block text-center mt-3'>Not registered? <a href="/register">Register Now</a></small>
       </form>
     </main>
-</div>
+  </div>
+
+@endsection

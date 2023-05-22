@@ -1,112 +1,48 @@
 @extends('layouts.main')
 
-@section("container")
- 
-@endsection
 @include('partials.fixed_nav')
-
+{{-- @section("container") --}}
 
 <style>
-
-body {
-  overflow: hidden;
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/fonts/your-font-file.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+  font-family: 'Inknut Antiqua';
+  src: url('path/to/inknut-antiqua.woff2') format('woff2'),
+       url('path/to/inknut-antiqua.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
- .background {
-  background-color: #c0c0c0;
-  height: 1080px;
-  width: 1920px;
-  position: absolute;
+.font-weight-bold {
+  position: relative;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: 4px 4px black;
+  -webkit-text-fill-color: white;
+  text-outline: 5px solid black;
+  color: white;
 }
-
-.image {
-  background-image: url('img/home2.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  top: 10%;
-  right: 0;
-  transform: translateY(-50%);
-}
-.container {
-  margin-bottom: 5px;
-}
-
-.card {
-  background-color: #fff;
-  border-radius: 15px;
-  border: none;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
-  animation: enter 0.5s ease;
-  top: 250px;
-  right: 300px;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
-}
-
-.card-body {
-  padding: 30px;
-}
-
-.btn {
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding: 10px 30px;
-  margin-top: 20px;
-  width: 100%;
-}
-
-.btn-secondary {
-  background-color: #4e342e;
-  border-color: #4e342e;
-}
-
-.btn-outline-secondary {
-  color: #4e342e;
-  background-color: transparent;
-  border-color: #4e342e;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-}
-@keyframes enter {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 </style>
 
-<main>
-  <div class="container mb-5">
-    <div class="row justify-content-center">
-      <div class="background">
-        <div class="image"></div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="fw-normal"></h2>
-            <p><a class="btn btn-outline-secondary" href="/login">Kopi</a></p>
-            {{-- <button class="btn btn-outline-secondary" id="regis">Register</button> --}}
-          </div>
+<html class="overflow-hidden">
+    <main class="bg-orange-500 w-screen h-screen top-0 fixed">
+        <div class="top-80 relative text-center z-1">
+            <h1 class="text-white text-5xl font-weight-bold" style="font-family: 'Montserrat Alternates', sans-serif;">Coffee you can trust <br> from seed to cup.</h1>
+            <a href="/shop">
+                <button class="bg-black text-white w-52 h-14 rounded-3xl mt-4 text-2xl" style="font-family: 'Inknut Antiqua', sans-serif;">Shop Now</button>
+            </a>
         </div>
-      </div>
-    </div>
-  </div>
-  </body>
-</main>
+        <div class="flex justify-center top-12 relative">
+            <img class="w-80 h-72 max-w-full" src="dashboard.png" alt="">
+            <img class="h-auto" src="seed.png" alt="" style="width: 50rem">
+        </div>
+    </main>
 </html>
 
+{{-- @endsection --}}

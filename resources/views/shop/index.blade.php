@@ -1,36 +1,42 @@
 @extends('layouts.main')
 @include('partials.fixed_nav')
-@section("container")
 
 <style>
-  .card a {
-  color: black;
-  text-decoration: none;
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/fonts/your-font-file.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+  font-family: 'Inknut Antiqua';
+  src: url('path/to/inknut-antiqua.woff2') format('woff2'),
+       url('path/to/inknut-antiqua.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 </style>
-<div style="display: flex; align-items: center;">
-    <h1>SHOP</h1>
-    <a href="/sell">Jual</a>
-  </div>
-<div class="container">
-    <div class="row justify-content-center">
-        @foreach($barangs as $barang)
-        <div class="col-md-4 mb-3">
-          <a href="{{ url('shop') }}/{{ $barang->id }}">
-            <div class="card">
-                @if ($barang->image)
-                <img src="{{ asset('storage/' . $barang->image) }}" alt="..." class="card-img-top">
-                @endif
-              <div class="card-body">
-                <h5 class="card-title">{{ $barang->name }}</h5>
-                <p class="card-text">
-                    <strong>Harga :</strong> Rp. {{ number_format($barang->harga)}} <br>
-                </p>
-                </a>
-              </div>
-            </div> 
+
+<html>
+  <div class=" grid grid-cols-5 gap-4 my-7">
+    @foreach($barangs as $barang)
+    <div class="">
+      @if ($barang->image)
+      <img class="border-2 border-black p-2" src="{{ asset('storage/' . $barang->image) }}" alt="">
+      @endif
+      <div class="border-2 border-black p-2 grid grid-cols-3">
+        <h5 class="text-3xl col-span-2">{{ $barang->name }}</h5>
+        <p class="relative text-right">Rp. {{ number_format($barang->harga)}} <br></p>
+        <a href="{{ url('shop') }}/{{ $barang->id }}">
+          <button class="bg-black text-white rounded-2xl col-span-2 mt-2" style="font-family: 'Inknut Antiqua', sans-serif;">ADD TO CART</button>
+        </a>
+          </div>
         </div>
-        @endforeach
+      @endforeach
     </div>
-</div>
-@endsection
+    <body>
+      <a href="/sell">
+      <h1>test</h1>
+      </a>
+  </body>
+</html>

@@ -20,4 +20,11 @@ class DashboardController extends Controller
             'title' => 'dashboard'
         ]);
     }
+    public function a()
+    {
+        return view('welcome', [
+            'title' => 'laravel'
+        ]);
+    }
 }
+

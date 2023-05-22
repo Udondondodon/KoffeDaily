@@ -9,25 +9,17 @@
 
       @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@500&display=swap');
 
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
       .b-example-vr {
         flex-shrink: 0;
         width: 1.5rem;
         height: 100vh;
       }
 
-
       .logo {
       position: relative;
-      width: 50px;
+      width: 150px;
       height: auto;
-      margin-top: 2px;
+      top: 20px;
       }
 
       .cup {
@@ -44,6 +36,7 @@
 
     .navbar {
       height: 70px;
+      background-color: 000F8F;
       }
 
     .navbar {
@@ -51,41 +44,37 @@
       padding-top: 20px;
       padding-bottom: 20px;
       }
-    
-
     </style>
 
     
-    <link href="navbar-fixed.css" rel="stylesheet">
+    {{-- <link href="navbar-fixed.css" rel="stylesheet"> --}}
   </head>
   <body>
-
-    
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-warning-subtle">
+    <nav class="navbar navbar-expand-md navbar-dark fixed top-0 w-screen z-10">
       <div class="container-fluid">
         <a class="navbar-brand cup" href="/home">
-          <img src="/koffecup.png" alt="cup">
+          <i class="bi bi-cup-hot text-white" style="font-size: 3rem;"></i>
         </a>
         <ul class="navbar-nav me-auto ms-auto">
           <li class="nav-item">
-            <a class="nav-link text-dark font shop" href="/shop">Shop</a>
+            <a class="nav-link text-light font shop" href="/shop">Shop</a>
           </li>
         </ul>
         <a class="navbar-brand logo" href="/home">
-          <img src="/logo1.png" alt="Logo">
+          <img src="/logo_w.png" alt="Logo">
         </a>
         <ul class="navbar-nav ms-auto me-auto">
           <li class="nav-item">
-            <a class="nav-link text-dark font" href="/learn">Learn</a>
+            <a class="nav-link text-light font" href="/learn">Learn</a>
           </li>
         </ul>
           @auth
           <li class="navbar dropdown">
             <a class="nav-link dropdown ms-auto" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle" style="font-size: 3rem;"></i>
+              <i class="bi bi-person-circle text-white" style="font-size: 3rem;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <button type='submit' class="dropdown-item ">Lihat Akun</button>
+              <button type='submit' class="dropdown-item bi bi-person-circle">Lihat Akun</button>
               <li><hr class="dropdown-divider"></li>
               <form action="/logout" method="post">
                 @csrf
@@ -94,7 +83,7 @@
             </ul>
           </li>
           @else
-          <a class="nav-link text-dark font" href="/login">Login</a>
+          <a class="nav-link text-light font" href="/login">Login</a>
           @endauth
         </div>
       </div>
