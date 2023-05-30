@@ -48,19 +48,30 @@
                                     <tr>
                                         <td>Stok</td>
                                         <td>:</td>
-                                        <td>{{ number_format($barangs->stok) }}</td>
+                                        <td>
+                                            @if ($barangs->stok == "0")
+                                                <h1>stock barang habis</h1>
+                                            @endif
+                                            @if ($barangs->stok != "0")
+                                            {{ number_format($barangs->stok) }}
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
+                                        @if ($barangs->stok != "0")
                                         <td>Jumlah Pesan</td>
                                         <td>:</td>
                                         <td>
                                              <form method="post" action="{{ url('detail') }}/{{ $barangs->id }}" >
                                             @csrf
-                                                <input type="text" name="jumlah_pesan" class="form-control" required="">
-                                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Pesan</button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                            
+                                            <input type="text" name="jumlah_pesan" class="form-control" required="">
+                                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Pesan</button>
+                                            
+                                        </form>
+                                    </td>
+                                    @endif
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

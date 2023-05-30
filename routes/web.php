@@ -5,13 +5,14 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\LearnController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 
 
 
-Route::get('/', [DashboardController::class, 'a'])->middleware('guest');
 Route::get('/home', [DashboardController::class, 'home'])->middleware('guest');
+Route::get('/', [DashboardController::class, 'a'])->middleware('guest');
 
 // Login
 
@@ -37,9 +38,15 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('IsL
 Route::get('/shop', [ShopController::class, 'index'])->middleware('IsLogin');
 Route::get('/shop/{id}', [ShopController::class, 'shop'])->middleware('IsLogin');
 Route::post('/detail/{id}', [ShopController::class, 'pesan'])->middleware('IsLogin');
+Route::post('/checkout', [ShopController::class, 'checkout'])->middleware('IsLogin');
+
+// Sell
 Route::get('/sell', [ShopController::class, 'jual'])->middleware('IsMitra');
 Route::post('/sell', [ShopController::class, 'form']);
 
+// Payment
+Route::get('/order', [OrderController::class, 'index'])->middleware('IsMitra');
+Route::get('/order/{id}', [OrderController::class, 'order'])->middleware('IsMitra');
 
 Route::get('/learn', [LearnController::class, 'index'])->middleware('IsLogin');
 

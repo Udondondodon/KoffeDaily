@@ -34,9 +34,16 @@
     <main class="bg-orange-500 w-screen h-screen top-0 fixed">
         <div class="top-80 relative text-center z-1">
             <h1 class="text-white text-5xl font-weight-bold" style="font-family: 'Montserrat Alternates', sans-serif;">Coffee you can trust <br> from seed to cup.</h1>
+            @if (auth()->user()->role=="2")
+            <a href="/order">
+                <button class="bg-black text-white w-72 h-14 rounded-3xl mt-4 text-2xl" style="font-family: 'Inknut Antiqua', sans-serif;">Order and Payment</button>
+            </a>
+            @endif
+            @if (auth()->user()->role !="2")
             <a href="/shop">
                 <button class="bg-black text-white w-52 h-14 rounded-3xl mt-4 text-2xl" style="font-family: 'Inknut Antiqua', sans-serif;">Shop Now</button>
             </a>
+            @endif
         </div>
         <div class="flex justify-center top-12 relative">
             <img class="w-80 h-72 max-w-full" src="dashboard.png" alt="">

@@ -55,7 +55,7 @@ table td:first-child {
 <body>
     <div class="container">
         <h1>Detail Pesanan</h1>
-        <table>
+        <table class="px-11 relative">
             <tr>
                 <td>Waktu Pemesanan:</td>
                 <td>{{ $pesanan->waktu_pemesanan }}</td>
@@ -77,21 +77,13 @@ table td:first-child {
                 <td>Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</td>
             </tr>
         </table>
-        <tr>
-            <td>Metode Pembayaran:</td>
-            <td>
-                <select name="metode_pembayaran">
-                    <option value="Transfer Bank">Transfer Bank</option>
-                    <option value="COD">COD</option>
-                </select>
-            </td>
-        </tr>
         <div class="button-container mt-5">
-            <a href="">
-            <button class="btn-buat-pesanan">Buat Pesanan</button>
-            </a>
+            <form action="/checkout" method="post">
+            @csrf
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Buat Pesanan</button>
+            </form>
             <a href="/shop">
-            <button class="btn-batal">Batal</button>
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Batal</button>
             </a>
         </div>
     </div>

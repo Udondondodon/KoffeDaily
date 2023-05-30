@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('password', 255);
             $table->rememberToken()->nullable();
             $table->integer('role')->default(0);
+            $table->integer('pendapatan')->default(0);
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
             // $table->timestamps();

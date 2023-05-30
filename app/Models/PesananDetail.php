@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PesananDetail extends Model
 {
-    use HasFactory;
+    public function pesanan()
+{
+    return $this->belongsTo(Pesanan::class);
+}
 }

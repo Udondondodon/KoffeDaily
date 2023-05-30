@@ -22,7 +22,7 @@ class DashboardController extends Controller
     }
     public function a()
     {
-        return view('welcome', [
+        return view('home.index', [
             'title' => 'laravel'
         ]);
     }

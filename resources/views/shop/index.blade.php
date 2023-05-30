@@ -2,7 +2,6 @@
 @include('partials.fixed_nav')
 
 <style>
-
 @font-face {
   font-family: 'Inknut Antiqua';
   src: url('path/to/inknut-antiqua.woff2') format('woff2'),
@@ -13,13 +12,14 @@
 </style>
 
 <html>
-  <div class=" grid grid-cols-4 gap-4 my-7">
-    @foreach($barangs as $barang)
-    <div class="">
+  <body>
+    <div class=" grid grid-cols-3 gap-4 my-7">
+      @foreach($barangs as $barang)
+      <div class="">
       @if ($barang->image)
-      <img class="border-2 border-black p-2" src="{{ asset('storage/' . $barang->image) }}" alt="">
+      <img class="border-2 border-black p-2 w-96 h-96" src="{{ asset('storage/' . $barang->image) }}" alt="">
       @endif
-      <div class="border-2 border-black p-2 grid grid-cols-3">
+      <div class="border-2 border-black p-2 grid grid-cols-3 w-96 h-auto">
         <h5 class="text-xl col-span-2">{{ $barang->name }}</h5>
         <p class="relative text-right">Rp. {{ number_format($barang->harga)}} <br></p>
         <a class="col-span-2 w-32" href="{{ url('shop') }}/{{ $barang->id }}">
@@ -27,11 +27,12 @@
         </a>
           </div>
         </div>
-      @endforeach
-    </div>
-    <body>
-      <a href="/sell">
-      <h1>test</h1>
-      </a>
-  </body>
+        @endforeach
+      </div>
+    </body>
+    @if (auth()->user()->role=="2")
+    <a class="" href="/sell">
+    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-96 items-center relative text-center top-11">Jual barang</button>
+    </a>
+    @endif
 </html>
