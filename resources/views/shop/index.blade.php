@@ -22,9 +22,23 @@
       <div class="border-2 border-black p-2 grid grid-cols-3 w-96 h-auto">
         <h5 class="text-xl col-span-2">{{ $barang->name }}</h5>
         <p class="relative text-right">Rp. {{ number_format($barang->harga)}} <br></p>
+        @if ($barang->mitra_id == auth()->user()->id)
+        <div>
+          <a class="col-start-1" href="{{ url('edit') }}/{{ $barang->id }}">
+              <button class="bg-black text-white rounded-3xl w-32 mt-2 text-base" style="font-family: 'Inknut Antiqua', sans-serif;">Edit</button>
+          </a>
+        </div>
+        <div>
+          <a class="p-28" href="/delete/{{ $barang->id }}">
+              <button class="bg-black text-white rounded-3xl w-32 mt-2 text-base" style="font-family: 'Inknut Antiqua', sans-serif;">Delete</button>
+          </a>
+        </div>
+        @endif
+        @if ($barang->mitra_id !=  auth()->user()->id )
         <a class="col-span-2 w-32" href="{{ url('shop') }}/{{ $barang->id }}">
-          <button class="bg-black text-white rounded-3xl w-32 mt-2 text-base" style="font-family: 'Inknut Antiqua', sans-serif;">ADD TO CART</button>
+          <button class="bg-black text-white rounded-3xl w-32 mt-2 text-base" style="font-family: 'Inknut Antiqua', sans-serif;">Add to Cart</button>
         </a>
+        @endif
           </div>
         </div>
         @endforeach

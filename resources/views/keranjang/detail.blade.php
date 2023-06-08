@@ -55,6 +55,7 @@ table td:first-child {
 <body>
     <div class="container">
         <h1>Detail Pesanan</h1>
+            
         <table class="px-11 relative">
             <tr>
                 <td>Waktu Pemesanan:</td>
@@ -74,7 +75,7 @@ table td:first-child {
             </tr>
             <tr>
                 <td>Total Harga:</td>
-                <td>Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</td>
+                <td>Rp {{ number_format($pesanan->total_harga + $biaya->nominal) }}</td>
             </tr>
         </table>
         <div class="button-container mt-5">

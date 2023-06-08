@@ -70,7 +70,7 @@
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
-              @enderror
+            @enderror
               <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 relative justify-center items-center flex">Daftarkan Barang</button>
           </div>
         </form>

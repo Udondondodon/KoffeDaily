@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('quantity');
             $table->string('nama_pemesan');
             $table->integer('total_harga');
+            $table->unsignedBigInteger('mitra_id');
+            $table->foreign('mitra_id')->references('id')->on('users');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
         });

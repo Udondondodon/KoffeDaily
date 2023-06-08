@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('berat');
             $table->date('expired');
             $table->string('image');
+            $table->unsignedBigInteger('mitra_id');
+            $table->foreign('mitra_id')->references('id')->on('users');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
         });

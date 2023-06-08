@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use App\Models\Barang;
 use App\Models\Pesanan;
+use App\Models\Biaya;
 use App\Models\PesananDetail;
 use Carbon\Carbon;
 
@@ -56,16 +57,44 @@ class ShopController extends Controller
             'harga' => 'required',
             'berat' => 'required',
             'expired' => 'required',
-            'image' => 'image|file|max:2048'
+            'image' => 'image|file|max:2048',
         ]);
-
-        if($request->file('image')) {
+    
+        if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('post-image');
         }
+    
+        $barang = new Barang($validatedData);
+        $barang->mitra_id = auth()->id(); // Assign the authenticated user's ID to the mitra_id field
+        $barang->save();
+    
+        // Redirect or do something else after successful creation
+        return redirect('/shop')->with('success', 'Barang created successfully');
+    }
 
-        Barang::create($validatedData);
+    public function edit($id) {
+    $barang = Barang::findOrFail($id);
+    
+    return view('shop.edit', compact('barang'), [
+        'title' => 'edit'
+    ]);
+    }
 
-        return redirect('/shop')->with('success', 'barang berhasil ditambahkan');
+    public function update(Request $request, $id) {
+        $barang = Barang::find($id);
+
+        $barang->update($request->all());
+    
+        // Redirect or do something else after successful creation
+        return redirect('shop')->with('success', 'Barang created successfully');
+    }
+
+    public function delete($id) {
+        $barang = Barang::findOrFail($id);
+
+        $barang->delete();
+
+        return redirect()->route('shop')->with('success', 'Barang deleted successfully');
     }
 
     public function pesan(Request $request, $id)
@@ -77,6 +106,8 @@ class ShopController extends Controller
     		return redirect('shop/'.$id);
     	}
 
+        $biaya = Biaya::latest()->first();
+
         
         $pesanan = new Pesanan;
         $pesanan->user_id = Auth::user()->id;
@@ -86,6 +117,7 @@ class ShopController extends Controller
         $pesanan->quantity = $request->input('jumlah_pesan');
         $pesanan->nama_pemesan = Auth::user()->name;
         $pesanan->total_harga = $barang->harga* $request->input('jumlah_pesan');
+        $pesanan->mitra_id = $barang->mitra_id;
         
         $pesanan->save();
         
@@ -93,40 +125,43 @@ class ShopController extends Controller
         $pesanan_detail->nama_pemesan = Auth::user()->name;
         $pesanan_detail->jumlah = $request->input('jumlah_pesan');
         $pesanan_detail->jumlah_harga = $barang->harga* $request->input('jumlah_pesan');
-        $pesanan_detail->status = 'diproses';
+        $pesanan_detail->status = 'Diproses';
 
         // $pesanan_detail->save();
 
         
         
-        return view('keranjang.detail', compact('barang','pesanan', 'pesanan_detail'), [
+        return view('keranjang.detail', compact('barang','pesanan', 'pesanan_detail', 'biaya'), [
             'title' => 'Shop'
         ]);
 
     }
     public function checkout(Request $request)
     {	
-        // $barang = Barang::all();
-        $barang = Barang::latest()->first();;
-        $pesan = Pesanan::latest()->first();;
+        $barang = Barang::latest()->first();
+        $pesan = Pesanan::latest()->first();
+        $users = auth()->user();
 
+    
         $pesanan = new PesananDetail;
         $pesanan->waktu_pemesanan = $pesan->waktu_pemesanan;
         $pesanan->nama_produk = $barang->name;
         $pesanan->quantity = $pesan->quantity;
         $pesanan->nama_pemesan = Auth::user()->name;
         $pesanan->total_harga = $pesan->total_harga;
-        $pesanan->status = 'diproses';
+        $pesanan->status = 'Diproses';
+        $pesanan->mitra_id = $barang->mitra_id;
         $pesanan->save();
 
         $barang->stok = $barang->stok - $pesanan->quantity;
 
         $barang->save();
 
-        return view('dashboard.index', 
-            compact('pesanan', 'barang'), [
+        return view('keranjang.scan', [
+            'pesanan' => $pesanan,
+            'barang' => $barang,
+            'users' => $users,
             'title' => 'Dashboard'
         ]);
-
     }
 }

@@ -187,7 +187,7 @@ form {
             @enderror
           </div>
           <div class="mb-3 mt-2">
-            <label for="image" class="form-label">Bukti Foto</label>
+            <label for="image" class="form-label">QRIS</label>
             <input class="form-control @error('password') is-invalid @enderror" type="file" id="image" name="image">
           </div>
           @error('image')

@@ -74,7 +74,17 @@
               <i class="bi bi-person-circle text-white" style="font-size: 3rem;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <button type='submit' class="dropdown-item bi bi-person-circle">Lihat Akun</button>
+              <a href="/akun">
+                <button type='submit' class="dropdown-item bi bi-person-circle">Lihat Akun</button>
+              </a>
+              {{-- @if (auth()->user()->role=='1' || auth()->user()->role=='2')
+              <a href="/income">
+                <button type='submit' class="dropdown-item bi bi-cash-coin">Pendapatan</button>
+              </a>
+              @endif --}}
+              <a href="/history">
+                <button type='submit' class="dropdown-item bi bi-cash-coin">Riwayat Penjualan</button>
+              </a>
               <li><hr class="dropdown-divider"></li>
               <form action="/logout" method="post">
                 @csrf
